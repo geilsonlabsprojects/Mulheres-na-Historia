@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mulheres Que Fizeram História | Grêmio Estudantil</title>
+    <title>Mulheres Que Fizeram História | Grêmio Futuro em Ação</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <!-- Icone -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/4nqCPx7f/Design-sem-nome-6-removebg-preview.png">
     
     <script>
         tailwind.config = {
@@ -34,122 +36,176 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
         }
-        /* Animação suave para o Modal */
-        .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
+        /* Animação suave para o Modal e Filtros */
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        .modal-enter { animation: popIn 0.3s ease-out forwards; }
         @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes popIn {
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
         }
+        /* Esconde barra de rolagem mas permite rolar no modal */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-200 selection:text-brand-900">
 
-    <!-- Navegação com Logos -->
-    <nav class="w-full bg-white border-b border-slate-200 shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+    <!-- Navegação com Logos (Ajustado para Celular) -->
+    <nav class="w-full bg-white border-b border-slate-200 shadow-sm transition-all duration-300 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
                 
                 <!-- Área das Logos -->
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 md:gap-4">
                     
                     <!-- 👇 LOGO DO COLÉGIO AQUI 👇 -->
-                    <!-- Substitua o link do src pelo link do ImgBB -->
                     <img src="https://i.ibb.co/nN6D3KWN/Design-sem-nome-5.png" 
                          alt="Logo Colégio" 
-                         class="h-12 w-auto object-contain rounded-md"
+                         class="h-8 md:h-12 w-auto object-contain rounded-md"
                          title="Logo do Colégio">
                     
-                    <div class="h-8 w-px bg-slate-300"></div> <!-- Linha divisória -->
+                    <div class="h-6 md:h-8 w-px bg-slate-300"></div> <!-- Linha divisória -->
 
                     <!-- 👇 LOGO DO GRÊMIO AQUI 👇 -->
-                    <!-- Substitua o link do src pelo link do ImgBB -->
                     <img src="https://i.ibb.co/qL1NBnYL/Design-sem-nome-6.png" 
-                         alt="Logo Grêmio" 
-                         class="h-12 w-auto object-contain rounded-md"
-                         title="Logo do Grêmio">
+                         alt="Logo Grêmio Futuro em Ação" 
+                         class="h-8 md:h-12 w-auto object-contain rounded-md"
+                         title="Grêmio Futuro em Ação">
                     
-                    <span class="hidden lg:block font-serif font-bold text-xl tracking-tight text-brand-900 ml-2">
+                    <span class="hidden sm:block font-serif font-bold text-sm md:text-xl tracking-tight text-brand-900 ml-1 md:ml-2 line-clamp-1">
                         Mulheres na História
                     </span>
                 </div>
 
-                <div class="hidden md:flex items-center space-x-2 text-sm font-medium text-brand-600 bg-brand-50 px-4 py-2 rounded-full border border-brand-100">
-                    <i class="fa-solid fa-star"></i>
-                    <span>Projeto Especial</span>
+                <!-- Selo Projeto Especial (Agora aparece no celular) -->
+                <div class="flex items-center space-x-1 md:space-x-2 text-[10px] md:text-sm font-medium text-brand-600 bg-brand-50 px-2 py-1 md:px-4 md:py-2 rounded-full border border-brand-100 shrink-0">
+                    <i class="fa-solid fa-star text-brand-500"></i>
+                    <span class="hidden md:inline">Projeto Especial</span>
+                    <span class="md:hidden">Especial</span>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Cabeçalho (Hero Section) -->
-    <header class="relative pt-16 pb-20 lg:pt-28 lg:pb-32 overflow-hidden bg-slate-900">
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-600 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
-            <div class="absolute top-48 -left-24 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
+    <header class="relative pt-12 pb-16 md:pt-20 md:pb-24 lg:pt-28 lg:pb-32 overflow-hidden bg-slate-900">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-64 h-64 md:w-96 md:h-96 bg-brand-600 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
+            <div class="absolute top-48 -left-24 w-48 h-48 md:w-72 md:h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
         </div>
 
         <div class="relative max-w-4xl mx-auto px-4 text-center z-10">
-            <h6 class="font-serif text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-    Aprenda mais sobre as 
-    <span class="text-pink-400">mulheres</span> 
-    que fizeram história. 
-</h6>
-            <p class="text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
-                Além das histórias apresentadas em nosso material principal, convidamos você a conhecer mulheres extraordinárias que romperam barreiras na ciência, arte, política e direitos humanos. <br>
-                <span class="font-semibold text-brand-300 mt-2 block">Clique em qualquer foto para ler a biografia completa.</span>
+    <span class="inline-block py-1 px-3 rounded-full bg-gray-100 border border-gray-300 text-gray-700 text-sm font-semibold mb-6 tracking-wider uppercase">
+        Grêmio Futuro em Ação apresenta
+    </span>
+
+            </span>
+            <h6 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                Aprenda mais sobre as <br class="hidden md:block">
+                <span class="text-pink-400">mulheres</span> que fizeram história.
+            </h6>
+            <p class="text-base md:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10 px-2">
+                Além das histórias apresentadas em nosso material principal, conheça mulheres extraordinárias que romperam barreiras na ciência, arte e direitos humanos.
             </p>
-            <a href="#galeria" class="inline-flex items-center gap-2 bg-white text-slate-900 font-semibold px-8 py-4 rounded-full hover:bg-brand-50 hover:scale-105 transition-all duration-300 shadow-lg">
-                Ver <i class="fa-solid fa-arrow-down"></i>
+            <a href="#galeria" class="inline-flex items-center gap-2 bg-white text-slate-900 font-semibold px-6 py-3 md:px-8 md:py-4 rounded-full hover:bg-brand-50 hover:scale-105 transition-all duration-300 shadow-lg">
+                Explorar Galeria <i class="fa-solid fa-arrow-down"></i>
             </a>
         </div>
     </header>
 
-    <!-- Galeria Principal (Gerada via JavaScript) -->
-    <main id="galeria" class="py-20 bg-slate-50">
+    <!-- Seção de Filtros e Pesquisa (NOVA FUNÇÃO) -->
+    <section class="bg-white border-b border-slate-200 py-6 sticky top-16 md:top-20 z-30 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Os cards serão inseridos aqui pelo JavaScript -->
-            <div id="grid-mulheres" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                
+                <!-- Barra de Pesquisa -->
+                <div class="relative w-full md:w-96">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-search text-slate-400"></i>
+                    </div>
+                    <input type="text" id="input-pesquisa" onkeyup="filtrarGaleria()" placeholder="Buscar por nome..." class="w-full pl-10 pr-3 py-2 border border-slate-300 rounded-full focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-shadow">
+                </div>
+
+                <!-- Botões de Categoria -->
+                <div class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar" id="container-filtros">
+                    <button onclick="definirCategoria('Todas')" class="filtro-btn ativo whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors bg-brand-600 text-white shadow-md">Todas</button>
+                    <button onclick="definirCategoria('Ciência')" class="filtro-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">Ciência</button>
+                    <button onclick="definirCategoria('Artes / Brasil')" class="filtro-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">Artes</button>
+                    <button onclick="definirCategoria('Direitos Civis')" class="filtro-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">Direitos</button>
+                    <button onclick="definirCategoria('Tecnologia')" class="filtro-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">Tecnologia</button>
+                    <button onclick="definirCategoria('Esportes')" class="filtro-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">Esportes</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria Principal -->
+    <main id="galeria" class="py-16 bg-slate-50 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Mensagem de "Nenhum resultado" -->
+            <div id="mensagem-vazio" class="hidden text-center py-20">
+                <i class="fa-solid fa-magnifying-glass text-4xl text-slate-300 mb-4"></i>
+                <h3 class="text-xl font-medium text-slate-600">Nenhuma mulher encontrada com esse filtro.</h3>
+                <button onclick="limparFiltros()" class="mt-4 text-brand-600 hover:underline font-medium">Limpar busca</button>
+            </div>
+
+            <!-- Os cards serão inseridos aqui -->
+            <div id="grid-mulheres" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
                 <!-- Conteúdo dinâmico -->
             </div>
         </div>
     </main>
 
-    <!-- MODAL DE BIOGRAFIA (Oculto por padrão) -->
+    <!-- MODAL DE BIOGRAFIA -->
     <div id="modal-biografia" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-        <!-- Fundo escuro (clicar fecha o modal) -->
-        <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onclick="fecharModal()"></div>
+        <!-- Fundo escuro -->
+        <div class="absolute inset-0 bg-slate-900/85 backdrop-blur-sm transition-opacity" onclick="fecharModal()"></div>
         
         <!-- Conteúdo do Modal -->
-        <div class="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] modal-enter">
+        <div class="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] modal-enter">
             
             <!-- Botão Fechar -->
-            <button onclick="fecharModal()" class="absolute top-4 right-4 z-10 bg-white/50 hover:bg-white text-slate-900 p-2 rounded-full shadow backdrop-blur-md transition">
+            <button onclick="fecharModal()" class="absolute top-4 right-4 z-20 bg-black/40 hover:bg-brand-600 text-white p-2 rounded-full shadow-lg backdrop-blur-md transition-all">
                 <i class="fa-solid fa-xmark text-xl w-6 h-6 flex items-center justify-center"></i>
             </button>
 
-            <!-- Capa do Modal -->
-            <div class="h-64 sm:h-80 w-full relative bg-slate-200 shrink-0">
-                <img id="modal-img" src="" alt="Foto" class="w-full h-full object-cover">
-                <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/90 to-transparent p-6 pt-20">
-                    <span id="modal-tag" class="inline-block bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-2"></span>
-                    <h2 id="modal-nome" class="font-serif text-3xl sm:text-4xl font-bold text-white">Nome</h2>
-                    <p id="modal-area" class="text-brand-300 font-medium">Área (Período)</p>
+            <!-- Capa do Modal (Ajuste no object-top para não cortar o rosto) -->
+            <div class="h-56 md:h-72 w-full relative bg-slate-800 shrink-0">
+                <img id="modal-img" src="" alt="Foto" class="w-full h-full object-cover object-top opacity-90">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+                
+                <div class="absolute bottom-0 left-0 w-full p-6 md:p-8">
+                    <span id="modal-tag" class="inline-block bg-brand-600 text-white text-[10px] md:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 shadow-md"></span>
+                    <h2 id="modal-nome" class="font-serif text-3xl md:text-5xl font-bold text-white drop-shadow-lg mb-1">Nome</h2>
+                    <!-- Datas muito mais visíveis aqui -->
+                    <p id="modal-area" class="text-brand-200 font-semibold text-sm md:text-base drop-shadow-md bg-black/30 inline-block px-3 py-1 rounded-lg backdrop-blur-sm border border-white/10 mt-2">Área (Período)</p>
                 </div>
             </div>
 
-            <!-- Área de Texto do Modal com Scroll -->
-            <div class="p-6 sm:p-8 overflow-y-auto">
-                <blockquote class="italic text-lg text-slate-600 border-l-4 border-brand-500 pl-4 py-2 bg-slate-50 rounded-r-lg mb-8">
+            <!-- Área de Texto do Modal -->
+            <div class="p-6 md:p-8 overflow-y-auto bg-white">
+                <blockquote class="italic text-base md:text-lg text-slate-700 border-l-4 border-brand-500 pl-4 py-2 bg-brand-50 rounded-r-lg mb-8">
                     "<span id="modal-citacao">Citação</span>"
                 </blockquote>
                 
-                <h3 class="font-bold text-xl text-slate-800 mb-4 border-b pb-2">Biografia Completa</h3>
-                <div id="modal-texto" class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
+                <h3 class="font-bold text-xl text-slate-900 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-book-open text-brand-500"></i> Biografia Completa
+                </h3>
+                <div id="modal-texto" class="prose prose-slate prose-p:text-slate-600 prose-p:leading-relaxed max-w-none space-y-4">
                     <!-- O texto da biografia entra aqui via JS -->
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Botão Voltar ao Topo (NOVA FUNÇÃO) -->
+    <button id="btn-topo" onclick="window.scrollTo(0,0)" class="fixed bottom-6 right-6 bg-brand-600 text-white w-12 h-12 rounded-full shadow-xl flex items-center justify-center hover:bg-brand-700 hover:scale-110 transition-all duration-300 opacity-0 pointer-events-none z-40 translate-y-4">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <!-- Rodapé -->
     <footer class="bg-slate-900 text-white pt-16 pb-8 border-t-4 border-brand-500">
@@ -158,11 +214,15 @@
             <p class="text-slate-400 max-w-2xl mx-auto mb-8">
                 Que o legado dessas mulheres históricas inspire todos os estudantes da nossa escola a acreditarem em seu próprio potencial de mudar o mundo.
             </p>
-            <div class="border-t border-slate-800 pt-8 mt-8">
-                <p class="text-slate-500 text-sm mb-2">
-                    Projeto desenvolvido pelo <strong class="text-slate-300">Grêmio Estudantil</strong>.
-                </p>
-            </div>
+          <div class="border-t border-slate-800 pt-8 mt-8 flex flex-col items-center justify-center gap-4">
+    <img src="https://i.ibb.co/4nqCPx7f/Design-sem-nome-6-removebg-preview.png" 
+         alt="Logo Grêmio Futuro em Ação" 
+         class="h-12 transition-all duration-300">
+         
+    <p class="text-slate-500 text-sm">
+        Projeto desenvolvido pelo <strong class="text-white">Grêmio Estudantil Futuro em Ação</strong>.
+    </p>
+</div>
         </div>
     </footer>
 
@@ -170,14 +230,12 @@
     <script>
         /* =====================================================================
            👇 BANCO DE DADOS DAS MULHERES 👇
-           Para alterar as fotos, cole o link do ImgBB no campo "imagem:".
-           Você pode adicionar mais mulheres apenas copiando e colando um bloco.
            ===================================================================== */
         const mulheres = [
             {
                 id: 1,
                 nome: "Marie Curie",
-                imagem: "https://via.placeholder.com/600x400/e2e8f0/64748b?text=Foto+Marie+Curie",
+                imagem: "https://i.ibb.co/yBxJDVgX/960px-Marie-Curie-c1920.jpg",
                 tag: "Ciência",
                 area: "Física e Química",
                 periodo: "1867-1934",
@@ -187,45 +245,42 @@
                     <p>Nascida Maria Salomea Skłodowska em 7 de novembro de 1867, em Varsóvia, na Polônia, Marie Curie foi uma das cientistas mais brilhantes da história. Em uma época em que o acesso à universidade era negado às mulheres em seu país natal, ela estudou secretamente na "Universidade Flutuante" antes de se mudar para Paris em 1891 para continuar seus estudos na Sorbonne, onde sobreviveu com parcos recursos, dedicando-se inteiramente à física e à matemática.</p>
                     <p>Em 1895, casou-se com Pierre Curie, com quem formou uma das parcerias científicas mais notáveis da história. Intrigada com a descoberta dos raios de urânio por Henri Becquerel, Marie decidiu investigar o fenômeno, cunhando o termo "radioatividade". Suas pesquisas exaustivas a levaram, junto com Pierre, à descoberta de dois novos elementos químicos em 1898: o polônio (nomeado em homenagem ao seu país natal) e o rádio.</p>
                     <p>Em 1903, ela se tornou a primeira mulher a receber um Prêmio Nobel (em Física). Após a trágica morte de Pierre em 1906, atropelado por uma carruagem, Marie assumiu sua cátedra na Sorbonne, tornando-se a primeira professora mulher da instituição. Em 1911, ela ganhou um segundo Prêmio Nobel, desta vez em Química, por isolar o rádio puro, tornando-se a primeira pessoa a receber a honraria duas vezes em áreas distintas.</p>
-                    <p>Durante a Primeira Guerra Mundial, Marie Curie desenvolveu unidades móveis de radiografia, apelidadas de "Petites Curies", que ajudaram a tratar mais de um milhão de soldados feridos no front. A exposição contínua e desprotegida à radiação ao longo de sua vida cobrou seu preço. Marie faleceu em 1934, vítima de anemia aplásica. Seu legado perdura não apenas como fundadora da física nuclear, mas como um ícone atemporal da perseverança feminina na ciência.</p>
                 `
             },
             {
                 id: 2,
                 nome: "Nise da Silveira",
-                imagem: "https://via.placeholder.com/600x400/e2e8f0/64748b?text=Foto+Nise+da+Silveira",
-                tag: "Medicina / Brasil",
+                imagem: "https://i.ibb.co/Pz41wbvN/7ef2c9-cbe92f12776d4e15b961970e564d3316-mv2.jpg",
+                tag: "Ciência", // Simplificado para os filtros
                 area: "Médica Psiquiatra",
                 periodo: "1905-1999",
                 resumo: "Revolucionou a psiquiatria no Brasil introduzindo a arte e o afeto como ferramentas de cura.",
                 citacao: "Não se curem além da conta. Gente curada demais é gente chata. Todo ser humano tem uma loucura interior.",
                 biografia: `
-                    <p>Nascida em 15 de fevereiro de 1905, em Maceió, Alagoas, Nise da Silveira revolucionou o tratamento psiquiátrico no Brasil e no mundo. Em 1926, aos 21 anos, formou-se na Faculdade de Medicina da Bahia, sendo a única mulher em uma turma de 157 homens. Nos anos 1930, mudou-se para o Rio de Janeiro, onde trabalhou no Serviço de Assistência a Psicopatas e Profilaxia Mental.</p>
-                    <p>Devido ao seu envolvimento com leituras marxistas, foi denunciada durante o Estado Novo de Getúlio Vargas, passando mais de um ano na prisão, onde conviveu com o escritor Graciliano Ramos. Após ser libertada, viveu na semiclandestinidade até ser reintegrada ao serviço público em 1944, sendo alocada no Centro Psiquiátrico Nacional, no Engenho de Dentro.</p>
-                    <p>Foi lá que Nise iniciou sua revolução silenciosa. Ela recusou-se veementemente a aplicar os brutais tratamentos da época, como eletrochoques, comas insulínicos e lobotomia, que considerava desumanos. Relegada ao abandonado setor de Terapia Ocupacional, introduziu ateliês de pintura e modelagem, permitindo que os pacientes expressassem seus conflitos internos. As obras produzidas revelaram um material simbólico tão rico que Nise fundou o Museu de Imagens do Inconsciente em 1952.</p>
-                    <p>Seu trabalho chamou a atenção de Carl Gustav Jung, com quem Nise estudou na Suíça. Ela também foi pioneira na pesquisa da relação afetiva entre pacientes e animais, a quem chamava de "coterapeutas". Nise da Silveira dedicou sua vida a provar que os distúrbios mentais não deveriam ser tratados com violência, mas com compreensão, arte e afeto, tornando-se a grande matriarca do movimento antimanicomial brasileiro.</p>
+                    <p>Nascida em 15 de fevereiro de 1905, em Maceió, Alagoas, Nise da Silveira revolucionou o tratamento psiquiátrico no Brasil e no mundo. Em 1926, aos 21 anos, formou-se na Faculdade de Medicina da Bahia, sendo a única mulher em uma turma de 157 homens.</p>
+                    <p>Foi lá que Nise iniciou sua revolução silenciosa. Ela recusou-se veementemente a aplicar os brutais tratamentos da época, como eletrochoques e lobotomia, que considerava desumanos. Relegada ao abandonado setor de Terapia Ocupacional, introduziu ateliês de pintura e modelagem, permitindo que os pacientes expressassem seus conflitos internos. As obras produzidas revelaram um material simbólico tão rico que Nise fundou o Museu de Imagens do Inconsciente em 1952.</p>
+                    <p>Seu trabalho chamou a atenção de Carl Gustav Jung, com quem Nise estudou na Suíça. Nise da Silveira dedicou sua vida a provar que os distúrbios mentais não deveriam ser tratados com violência, mas com compreensão, arte e afeto, tornando-se a grande matriarca do movimento antimanicomial brasileiro.</p>
                 `
             },
             {
                 id: 3,
                 nome: "Rosa Parks",
-                imagem: "https://via.placeholder.com/600x400/e2e8f0/64748b?text=Foto+Rosa+Parks",
+                imagem: "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/8899/live/f9399570-8f6a-11ee-8bf7-a1432e55b6ff.jpg.webp", // Imagem placeholder melhor
                 tag: "Direitos Civis",
                 area: "Ativista",
                 periodo: "1913-2005",
                 resumo: "Símbolo do movimento dos direitos civis nos EUA por se recusar a ceder seu lugar no ônibus.",
                 citacao: "Eu gostaria de ser lembrada como uma pessoa que queria ser livre... para que os outros fossem livres.",
                 biografia: `
-                    <p>Rosa Louise McCauley Parks, nascida em 4 de fevereiro de 1913, no Alabama, é frequentemente aclamada como a "mãe do movimento dos direitos civis modernos" nos Estados Unidos. Crescendo no sul segregado, ela enfrentou diariamente a brutalidade das leis de Jim Crow, que impunham a separação racial em todos os aspectos da vida pública. Ativa na NAACP (Associação Nacional para o Progresso de Pessoas de Cor), Rosa trabalhou como secretária e investigadora de casos de violência e abuso contra pessoas negras.</p>
-                    <p>O momento que imortalizou seu nome ocorreu no fim da tarde de 1º de dezembro de 1955, em Montgomery. Retornando do trabalho como costureira, Rosa recusou-se a ceder seu assento na seção "de cor" do ônibus a um passageiro branco, contrariando a exigência do motorista. Diferente do que o mito popular sugere, ela não estava apenas "cansada fisicamente", mas sim "cansada de ceder". Sua recusa serena e firme resultou em sua prisão.</p>
-                    <p>Esse ato de desobediência civil foi o estopim para o Boicote aos Ônibus de Montgomery, um movimento massivo que durou 381 dias. A comunidade negra, liderada por um jovem pastor chamado Martin Luther King Jr., organizou caronas e caminhou quilômetros para o trabalho, paralisando o sistema de transporte da cidade. O boicote terminou em vitória quando a Suprema Corte dos EUA declarou inconstitucional a segregação em transportes públicos.</p>
-                    <p>Apesar da vitória política, Rosa e seu marido perderam seus empregos e enfrentaram ameaças de morte constantes, mudando-se para Detroit em 1957. Lá, continuou sua vida de ativismo, apoiando movimentos de moradia, justiça criminal e os direitos das mulheres. Ao longo de sua vida, recebeu as maiores honrarias do país, incluindo a Medalha Presidencial da Liberdade, deixando um legado inegável de que um único ato de coragem pode mudar o curso da história.</p>
+                    <p>Rosa Louise McCauley Parks, nascida em 4 de fevereiro de 1913, no Alabama, é frequentemente aclamada como a "mãe do movimento dos direitos civis modernos" nos Estados Unidos. O momento que imortalizou seu nome ocorreu no fim da tarde de 1º de dezembro de 1955, em Montgomery.</p>
+                    <p>Retornando do trabalho como costureira, Rosa recusou-se a ceder seu assento na seção "de cor" do ônibus a um passageiro branco, contrariando a exigência do motorista. Diferente do que o mito popular sugere, ela não estava apenas "cansada fisicamente", mas sim "cansada de ceder". Sua recusa serena e firme resultou em sua prisão.</p>
+                    <p>Esse ato de desobediência civil foi o estopim para o Boicote aos Ônibus de Montgomery, um movimento massivo que durou 381 dias. A comunidade negra, liderada por um jovem pastor chamado Martin Luther King Jr., organizou caronas e caminhou quilômetros para o trabalho, paralisando o sistema de transporte da cidade.</p>
                 `
             },
             {
                 id: 4,
                 nome: "Tarsila do Amaral",
-                imagem: "https://via.placeholder.com/600x400/e2e8f0/64748b?text=Foto+Tarsila+do+Amaral",
+                imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy8njx-2UXh7ogbuw79zAw4viU1qMLlgVpOw&s", // Imagem placeholder arte
                 tag: "Artes / Brasil",
                 area: "Pintora",
                 periodo: "1886-1973",
@@ -233,86 +288,150 @@
                 citacao: "Eu quero ser a pintora do meu país. Sou profundamente brasileira e vou estudar o gosto e a arte dos nossos caipiras.",
                 biografia: `
                     <p>Nascida em 1º de setembro de 1886, em Capivari, interior de São Paulo, Tarsila do Amaral cresceu em uma família da elite cafeeira. Essa origem abastada permitiu-lhe uma formação refinada na Europa, mas foi seu olhar para as raízes e cores do Brasil que a transformaria na pintora mais representativa do Modernismo Brasileiro.</p>
-                    <p>Embora não tenha participado diretamente da Semana de Arte Moderna de 1922, Tarsila juntou-se logo depois ao "Grupo dos Cinco" (com Anita Malfatti, Oswald de Andrade, Mário de Andrade e Menotti Del Picchia). Ao retornar a Paris em 1923, teve aulas com mestres cubistas como Fernand Léger. Foi então que começou a fundir a técnica das vanguardas europeias com a temática profundamente nacional, criando a fase "Pau-Brasil", marcada por cores caipiras, vegetação tropical e cenas rurais.</p>
-                    <p>O ápice de sua criatividade ocorreu em 1928, quando pintou "Abaporu" para dar de presente de aniversário ao marido, Oswald de Andrade. A figura de pés e mãos gigantescos com uma cabeça minúscula ao lado de um cacto sob o sol inspirou o Movimento Antropofágico. A ideia era "engolir" a cultura estrangeira dominante, digeri-la e devolvê-la como uma arte genuinamente brasileira, livre de imitações.</p>
-                    <p>Na década de 1930, após a Crise de 1929 dizimar a fortuna da família e após uma viagem à União Soviética, a obra de Tarsila assumiu um caráter de crítica social, com foco na classe trabalhadora, como visto na famosa tela "Operários" (1933). Até seu falecimento em 1973, Tarsila continuou a pintar, eternizando a identidade visual de um Brasil vibrante, místico e multifacetado.</p>
+                    <p>O ápice de sua criatividade ocorreu em 1928, quando pintou "Abaporu" para dar de presente de aniversário ao marido, Oswald de Andrade. A figura de pés e mãos gigantescos com uma cabeça minúscula ao lado de um cacto sob o sol inspirou o Movimento Antropofágico.</p>
+                    <p>A ideia era "engolir" a cultura estrangeira dominante, digeri-la e devolvê-la como uma arte genuinamente brasileira, livre de imitações. Até seu falecimento em 1973, Tarsila continuou a pintar, eternizando a identidade visual de um Brasil vibrante, místico e multifacetado.</p>
                 `
             },
             {
                 id: 5,
                 nome: "Katherine Johnson",
-                imagem: "https://via.placeholder.com/600x400/e2e8f0/64748b?text=Foto+Katherine+Johnson",
-                tag: "Tecnologia & Espaço",
+                imagem: "https://images.unsplash.com/photo-1541188495357-ad2dc89487f4?auto=format&fit=crop&q=80&w=800", // Imagem placeholder matemática
+                tag: "Tecnologia", // Simplificado
                 area: "Matemática",
                 periodo: "1918-2020",
                 resumo: "Cálculos de mecânica orbital essenciais para o sucesso da missão Apollo 11 à Lua.",
                 citacao: "Nós tínhamos que ter certeza da matemática... Se você não tem certeza, não faça. E eu tinha certeza.",
                 biografia: `
-                    <p>Creola Katherine Johnson nasceu em 26 de agosto de 1918, em White Sulphur Springs, Virgínia Ocidental. Desde a infância, demonstrou um talento excepcional para a matemática, contando tudo ao seu redor. Devido à segregação racial, seu condado não oferecia ensino médio para estudantes negros, obrigando sua família a se mudar para que ela pudesse estudar. Aos 18 anos, já era formada em Matemática e Francês pela West Virginia State College com honras máximas.</p>
-                    <p>Em 1953, sua vida mudou ao ser contratada pela NACA (predecessora da NASA) para trabalhar na seção de Computação da Área Oeste, um grupo composto inteiramente por mulheres afro-americanas brilhantes conhecidas como "computadoras humanas". Apesar das severas barreiras do racismo e do machismo na agência espacial, a precisão analítica e o profundo conhecimento de geometria analítica de Katherine a tornaram indispensável.</p>
-                    <p>Ela calculou a trajetória do voo de Alan Shepard, o primeiro americano no espaço, em 1961. O reconhecimento de seu gênio foi tão imenso que, em 1962, quando a NASA começou a usar computadores eletrônicos para calcular a órbita de John Glenn ao redor da Terra, o astronauta recusou-se a voar até que Katherine verificasse pessoalmente os números da máquina. "Se ela disser que os números estão corretos, estou pronto para ir", disse ele.</p>
-                    <p>Sua contribuição mais memorável, no entanto, veio em 1969, quando calculou as trajetórias, janelas de lançamento e planos de voo reserva para a missão Apollo 11, garantindo que os primeiros humanos a pisar na Lua pudessem retornar em segurança à Terra. Katherine trabalhou na NASA por 33 anos, e sua história, muito tempo esquecida, foi celebrada globalmente no filme "Estrelas Além do Tempo" (Hidden Figures). Ela faleceu em 2020, aos 101 anos.</p>
+                    <p>Creola Katherine Johnson nasceu em 26 de agosto de 1918. Desde a infância, demonstrou um talento excepcional para a matemática. Aos 18 anos, já era formada em Matemática e Francês pela West Virginia State College com honras máximas.</p>
+                    <p>Em 1953, foi contratada pela NACA (predecessora da NASA) para trabalhar como "computadora humana". Ela calculou a trajetória do voo de Alan Shepard, o primeiro americano no espaço, em 1961.</p>
+                    <p>Sua contribuição mais memorável veio em 1969, quando calculou as trajetórias para a missão Apollo 11, garantindo que os primeiros humanos a pisar na Lua pudessem retornar em segurança à Terra. Sua história foi celebrada globalmente no filme "Estrelas Além do Tempo".</p>
                 `
             },
             {
                 id: 6,
                 nome: "Dandara dos Palmares",
-                imagem: "https://via.placeholder.com/600x400/e2e8f0/64748b?text=Foto+Dandara",
-                tag: "Luta / Brasil",
-                area: "Guerreira",
+                imagem: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=800", // Imagem placeholder força/história
+                tag: "Direitos Civis", // Encaixado na categoria para o filtro
+                area: "Guerreira Quilombola",
                 periodo: "Falecimento em 1694",
                 resumo: "Líder quilombola e guerreira que lutou contra a escravidão ao lado de Zumbi dos Palmares.",
                 citacao: "Um grande símbolo de força, estratégia e resistência do povo negro na formação do Brasil.",
                 biografia: `
-                    <p>A vida de Dandara dos Palmares é envolta em lendas, força e resistência, sendo ela uma das figuras mais enigmáticas e formidáveis da luta contra a escravidão no Brasil colonial. Os registros históricos não confirmam se ela nasceu na África ou já em solo brasileiro, mas sabe-se que desde a juventude habitava o Quilombo dos Palmares, localizado na Serra da Barriga, na então Capitania de Pernambuco (hoje Alagoas).</p>
-                    <p>Diferente do estereótipo feminino da época, Dandara não limitava suas atividades aos cuidados domésticos e agrícolas do quilombo, embora também trabalhasse na produção de farinha e nas lavouras. Ela dominava as técnicas da capoeira e lutava ativamente na linha de frente com armas. Era uma líder militar e estrategista nata, comandando as falanges femininas e masculinas na defesa do refúgio contra os exércitos invasores portugueses e holandeses.</p>
-                    <p>Ao lado de seu marido, Zumbi dos Palmares, com quem teve três filhos, liderou a oposição ferrenha ao tratado de paz oferecido em 1678 pelo governo colonial ao então líder Ganga Zumba. O tratado propunha liberdade apenas para os nascidos em Palmares, mantendo a instituição da escravidão fora dali. Para Dandara e Zumbi, a liberdade não podia ser parcial: ou era para todos, ou para ninguém.</p>
-                    <p>Por quase duas décadas, Dandara defendeu a soberania de Palmares. Em 1694, quando a expedição do bandeirante Domingos Jorge Velho finalmente destruiu a Cerca do Macaco, principal núcleo do quilombo, Dandara foi encurralada à beira de um abismo. Em um ato final de insubmissão e para não retornar à brutalidade da escravidão, ela atirou-se do precipício. Dandara permanece até hoje como um dos maiores ícones do feminismo negro e da resistência popular no Brasil.</p>
+                    <p>A vida de Dandara dos Palmares é envolta em lendas, força e resistência. Sabe-se que desde a juventude habitava o Quilombo dos Palmares, localizado na Serra da Barriga, na então Capitania de Pernambuco.</p>
+                    <p>Diferente do estereótipo feminino da época, Dandara dominava as técnicas da capoeira e lutava ativamente na linha de frente com armas. Era uma líder militar e estrategista nata, comandando as falanges na defesa do refúgio contra os exércitos invasores.</p>
+                    <p>Ao lado de seu marido, Zumbi dos Palmares, liderou a oposição ferrenha aos tratados que não garantiam a liberdade de todos. Dandara permanece até hoje como um dos maiores ícones do feminismo negro e da resistência popular no Brasil.</p>
                 `
             },
             {
                 id: 7,
                 nome: "Ada Lovelace",
-                imagem: "https://via.placeholder.com/600x400/e2e8f0/64748b?text=Foto+Ada+Lovelace",
+                imagem: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800", // Imagem placeholder tecnologia
                 tag: "Tecnologia",
                 area: "Matemática",
                 periodo: "1815-1852",
                 resumo: "Primeira programadora da história. Escreveu o primeiro algoritmo para ser processado por máquina.",
                 citacao: "A imaginação é a faculdade da descoberta, preeminentemente. É ela que penetra nos mundos não vistos ao nosso redor.",
                 biografia: `
-                    <p>Augusta Ada King, Condessa de Lovelace, nasceu em Londres em 10 de dezembro de 1815. Filha do famoso poeta romântico Lord Byron e de Annabella Milbanke, sua vida foi moldada pelo medo da mãe de que a filha herdasse o temperamento volátil e "insano" do pai. Para conter qualquer inclinação poética, Annabella submeteu Ada a um rigoroso treinamento em matemática, lógica e ciências desde a infância, algo raríssimo para mulheres vitorianas.</p>
-                    <p>Aos 17 anos, Ada conheceu o matemático e inventor Charles Babbage em uma festa. Babbage demonstrou o protótipo de sua "Máquina Diferencial", uma calculadora mecânica gigante. Ada ficou fascinada. Uma profunda amizade intelectual nasceu entre os dois, e Ada tornou-se estudiosa do projeto seguinte e muito mais ambicioso de Babbage: a "Máquina Analítica", o primeiro conceito de um computador de uso geral.</p>
-                    <p>Em 1842, Ada traduziu um artigo em francês sobre a Máquina Analítica escrito pelo engenheiro Luigi Menabrea. A pedido de Babbage, ela adicionou suas próprias notas à tradução. Essas anotações, chamadas simplesmente de "Notas", eram três vezes mais longas que o artigo original. Na "Nota G", Ada descreveu meticulosamente um algoritmo para que a máquina calculasse a sequência de Números de Bernoulli. Este é amplamente considerado o primeiro programa de computador da história.</p>
-                    <p>A grande genialidade de Ada Lovelace foi além do algoritmo. Enquanto Babbage e seus contemporâneos viam a máquina apenas como uma calculadora numérica avançada, Ada teve um insight visionário, o que ela chamou de "ciência poética". Ela previu que a Máquina Analítica poderia manipular qualquer símbolo — como letras, lógica e até mesmo compor música —, desde que essas informações fossem convertidas em números. Ada Lovelace previu a era digital em mais de um século, falecendo precocemente aos 36 anos, em 1852.</p>
+                    <p>Augusta Ada King, Condessa de Lovelace, nasceu em Londres em 10 de dezembro de 1815. Filha do famoso poeta Lord Byron, foi submetida a um rigoroso treinamento em matemática desde a infância.</p>
+                    <p>Aos 17 anos, conheceu o matemático Charles Babbage e tornou-se estudiosa do seu projeto: a "Máquina Analítica". Em 1842, Ada descreveu meticulosamente um algoritmo para que a máquina calculasse a sequência de Números de Bernoulli. Este é amplamente considerado o primeiro programa de computador da história.</p>
+                    <p>Ada teve um insight visionário: previu que a Máquina Analítica poderia manipular qualquer símbolo — como letras, lógica e até mesmo compor música. Ela previu a era digital em mais de um século.</p>
+                `
+            },
+            {
+                id: 8,
+                nome: "Marta Silva",
+                imagem: "https://placehold.co/800x600/cbd5e1/1e293b?text=Link+do+ImgBB+Aqui",
+                tag: "Esportes",
+                area: "Futebolista",
+                periodo: "1986-Presente",
+                resumo: "Considerada a maior jogadora de futebol de todos os tempos, seis vezes eleita a melhor do mundo.",
+                citacao: "Chore no começo para sorrir no fim.",
+                biografia: `
+                    <p>Marta Vieira da Silva nasceu em 19 de fevereiro de 1986, em Dois Riachos, Alagoas. De origem humilde, superou o preconceito e a falta de apoio no início de sua carreira para se tornar a maior artilheira da história das Copas do Mundo (entre homens e mulheres).</p>
+                    <p>Iniciou sua carreira profissional no Vasco da Gama e rapidamente conquistou o mundo, brilhando no futebol sueco e norte-americano. Foi eleita a Melhor Jogadora do Mundo pela FIFA por seis vezes, sendo cinco delas consecutivas.</p>
+                    <p>Marta não é apenas um ícone do esporte, mas também uma Embaixadora da Boa Vontade da ONU Mulheres, lutando ativamente pela igualdade de gênero no esporte e servindo de inspiração para milhões de meninas que sonham em jogar futebol.</p>
+                `
+            },
+            {
+                id: 9,
+                nome: "Maria da Penha",
+                imagem: "https://placehold.co/800x600/cbd5e1/1e293b?text=Link+do+ImgBB+Aqui",
+                tag: "Direitos Civis",
+                area: "Ativista",
+                periodo: "1945-Presente",
+                resumo: "Símbolo da luta contra a violência doméstica no Brasil, inspirou a lei que leva seu nome.",
+                citacao: "A vida começa quando a violência acaba.",
+                biografia: `
+                    <p>Maria da Penha Maia Fernandes, nascida em Fortaleza, Ceará, em 1945, é uma farmacêutica e a principal ativista na defesa dos direitos das mulheres contra a violência doméstica no Brasil.</p>
+                    <p>Em 1983, seu marido tentou assassiná-la duas vezes, deixando-a paraplégica. Após as tentativas de homicídio, iniciou-se uma longa e dolorosa batalha judicial. O agressor permaneceu em liberdade por quase duas décadas, até que o caso ganhou repercussão internacional e a condenação do Brasil pela Comissão Interamericana de Direitos Humanos.</p>
+                    <p>Sua incansável busca por justiça resultou na sanção da Lei Maria da Penha (Lei nº 11.340/2006), uma das legislações mais avançadas do mundo no combate à violência contra a mulher. Hoje, ela lidera o Instituto Maria da Penha, ajudando a proteger e empoderar vítimas em todo o país.</p>
+                `
+            },
+            {
+                id: 10,
+                nome: "Carolina Maria de Jesus",
+                imagem: "https://placehold.co/800x600/cbd5e1/1e293b?text=Link+do+ImgBB+Aqui",
+                tag: "Artes / Brasil",
+                area: "Escritora",
+                periodo: "1914-1977",
+                resumo: "Uma das primeiras escritoras negras do Brasil, autora do best-seller 'Quarto de Despejo'.",
+                citacao: "A fome é a professora de quem não tem escola.",
+                biografia: `
+                    <p>Carolina Maria de Jesus nasceu em 14 de março de 1914, em Sacramento, Minas Gerais. Mulher negra, mãe solo e catadora de papel, ela registrava o cotidiano da favela do Canindé, em São Paulo, em cadernos que encontrava no lixo.</p>
+                    <p>Seus diários chamaram a atenção do jornalista Audálio Dantas em 1958, resultando na publicação do livro "Quarto de Despejo: Diário de uma Favelada" em 1960. A obra tornou-se um fenômeno editorial imediato, sendo traduzida para mais de dez idiomas.</p>
+                    <p>Carolina deu voz aos marginalizados e escancarou a realidade da fome e da desigualdade social no Brasil, consolidando-se como uma das vozes mais potentes e autênticas da literatura nacional.</p>
                 `
             }
         ];
 
         /* =====================================================================
-           LÓGICA DA PÁGINA: Renderizar os Cards e Controlar o Modal
+           LÓGICA DA PÁGINA: Renderizar, Filtrar e Controlar Modal
            ===================================================================== */
         
-        // 1. Renderiza os cartões na tela quando a página carrega
-        function renderizarGaleria() {
+        let categoriaAtual = 'Todas';
+        
+        // 1. Função principal de renderização
+        function renderizarGaleria(lista = mulheres) {
             const container = document.getElementById('grid-mulheres');
-            container.innerHTML = ''; // Limpa antes de gerar
+            const msgVazio = document.getElementById('mensagem-vazio');
+            
+            container.innerHTML = ''; 
 
-            mulheres.forEach(mulher => {
+            if (lista.length === 0) {
+                msgVazio.classList.remove('hidden');
+                return;
+            } else {
+                msgVazio.classList.add('hidden');
+            }
+
+            lista.forEach((mulher, index) => {
+                // Adicionando um pequeno atraso na animação para efeito em cascata
+                const delay = index * 0.05; 
+                
                 const cardHTML = `
-                    <article onclick="abrirModal(${mulher.id})" class="cursor-pointer bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group flex flex-col h-full">
-                        <div class="h-64 overflow-hidden relative bg-slate-200">
-                            <img src="${mulher.imagem}" alt="${mulher.nome}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                    <article onclick="abrirModal(${mulher.id})" class="fade-in cursor-pointer bg-white rounded-2xl overflow-hidden shadow border border-slate-100 group flex flex-col h-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300" style="animation-delay: ${delay}s; opacity: 0;">
+                        <!-- Imagem do Card: Ajustado h-48/h-56 e object-top -->
+                        <div class="h-56 overflow-hidden relative bg-slate-200">
+                            <img src="${mulher.imagem}" alt="${mulher.nome}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                                 ${mulher.tag}
                             </div>
-                            <div class="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/20 transition-colors duration-300 flex items-center justify-center">
-                                <span class="opacity-0 group-hover:opacity-100 bg-white text-slate-900 font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Ler Biografia</span>
+                            <div class="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/30 transition-colors duration-300 flex items-center justify-center">
+                                <span class="opacity-0 group-hover:opacity-100 bg-white text-slate-900 text-sm font-bold px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg">Ler História</span>
                             </div>
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="font-serif text-2xl font-bold text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">${mulher.nome}</h3>
-                            <p class="text-brand-600 text-sm font-semibold mb-4">${mulher.area} (${mulher.periodo})</p>
-                            <p class="text-slate-600 text-sm mb-6 flex-grow leading-relaxed">
+                        <!-- Textos do Card: Datas mais visíveis -->
+                        <div class="p-5 flex flex-col flex-grow">
+                            <h3 class="font-serif text-2xl font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">${mulher.nome}</h3>
+                            
+                            <!-- DATA E ÁREA AQUI: Agora dentro de uma caixinha cinza para super legibilidade -->
+                            <div class="mb-4">
+                                <span class="inline-block bg-slate-100 text-slate-700 text-xs md:text-sm font-medium px-3 py-1 rounded-md border border-slate-200">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-400"></i> ${mulher.area} (${mulher.periodo})
+                                </span>
+                            </div>
+
+                            <p class="text-slate-600 text-sm flex-grow leading-relaxed">
                                 ${mulher.resumo}
                             </p>
                         </div>
@@ -322,13 +441,48 @@
             });
         }
 
-        // 2. Abre a janela flutuante (Modal) com os dados da mulher clicada
+        // 2. Filtros e Pesquisa
+        function filtrarGaleria() {
+            const termoBusca = document.getElementById('input-pesquisa').value.toLowerCase();
+            
+            const listaFiltrada = mulheres.filter(m => {
+                const bateNome = m.nome.toLowerCase().includes(termoBusca) || m.resumo.toLowerCase().includes(termoBusca);
+                const bateCategoria = categoriaAtual === 'Todas' || m.tag.includes(categoriaAtual);
+                return bateNome && bateCategoria;
+            });
+
+            renderizarGaleria(listaFiltrada);
+        }
+
+        function definirCategoria(categoria) {
+            categoriaAtual = categoria;
+            
+            // Atualiza visual dos botões
+            const botoes = document.querySelectorAll('.filtro-btn');
+            botoes.forEach(btn => {
+                if(btn.innerText.includes(categoria.split(' ')[0])) { // Lógica simples para achar o botão clicado
+                    btn.classList.replace('bg-slate-100', 'bg-brand-600');
+                    btn.classList.replace('text-slate-600', 'text-white');
+                } else {
+                    btn.classList.replace('bg-brand-600', 'bg-slate-100');
+                    btn.classList.replace('text-white', 'text-slate-600');
+                }
+            });
+
+            filtrarGaleria();
+        }
+
+        function limparFiltros() {
+            document.getElementById('input-pesquisa').value = '';
+            definirCategoria('Todas');
+            document.querySelector('.filtro-btn').click(); // Clica no botão "Todas"
+        }
+
+        // 3. Controlar o Modal
         function abrirModal(id) {
-            // Busca os dados da mulher pelo ID
             const mulher = mulheres.find(m => m.id === id);
             if (!mulher) return;
 
-            // Preenche os dados no HTML do Modal
             document.getElementById('modal-img').src = mulher.imagem;
             document.getElementById('modal-tag').innerText = mulher.tag;
             document.getElementById('modal-nome').innerText = mulher.nome;
@@ -336,25 +490,33 @@
             document.getElementById('modal-citacao').innerText = mulher.citacao;
             document.getElementById('modal-texto').innerHTML = mulher.biografia;
 
-            // Mostra o Modal
             const modal = document.getElementById('modal-biografia');
             modal.classList.remove('hidden');
-            
-            // Impede a rolagem do fundo
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'; // Impede scroll de fundo
         }
 
-        // 3. Fecha a janela flutuante
         function fecharModal() {
             const modal = document.getElementById('modal-biografia');
             modal.classList.add('hidden');
-            
-            // Restaura a rolagem do fundo
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = 'auto'; // Volta scroll
         }
 
-        // Executa a função de montar a galeria quando a página carregar
-        window.onload = renderizarGaleria;
+        // 4. Botão Voltar ao Topo
+        window.onscroll = function() {
+            const btnTopo = document.getElementById('btn-topo');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btnTopo.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                btnTopo.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                btnTopo.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                btnTopo.classList.remove('opacity-100', 'translate-y-0');
+            }
+        };
+
+        // Inicialização
+        window.onload = () => {
+            renderizarGaleria();
+        };
     </script>
 </body>
 </html>
